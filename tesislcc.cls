@@ -8,31 +8,43 @@
 % modificado por Eduardo Acuña Yeomans
 
 
-\NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{tesislcc}[2011/01/15 v0.9]
-\def\@tempa#1#2\@nil{\edef\@classname{#1}}
-\expandafter\@tempa\@currnamestack{}{}{}\@nil
-\ifx\@classname\@empty \edef\@classname{\@currname}\fi
+% IDENTIFICACIÓN
+% ==============
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{tesislcc}[2016/01/16 v0.95]
 
+% DECLARACIONES PRELIMINARES
+% ==========================
+\newcommand{\BaseFontSize}{12pt}
+\newcommand{\HeadHeightSize}{16pt}
+\newcommand{\baseFontSize}[1]{\renewcommand{\BaseFontSize}{#1}}
+\newcommand{\headHeightSize}[1]{\renewcommand{\HeadHeightSize}{#1}}
 
+% OPCIONES
+% ========
+\DeclareOption{10pt}{
+  \baseFontSize{10pt}
+  \headHeightSize{13pt}
+}
+\DeclareOption{11pt}{
+  \baseFontSize{11pt}
+  \headHeightSize{13.6pt}
+}
+\DeclareOption{12pt}{
+  \baseFontSize{12pt}
+  \headHeightSize{14.5pt}
+}
+\DeclareOption*{
+  \PassOptionsToClass{\CurrentOption}{book}
+}
 
-\def\baseFontSize#1{\gdef\@BaseFontSize{#1}}
-\def\headHeightSize#1{\gdef\@HeadHeightSize{#1}}
-\def\@BaseFontSize{12pt}
-%\def\@HeadHeightSize{14.5pt}
-\def\@HeadHeightSize{16pt}
-\DeclareOption{10pt}{\baseFontSize{10pt}\headHeightSize{13.0pt}}
-\DeclareOption{11pt}{\baseFontSize{11pt}\headHeightSize{13.6pt}}
-\DeclareOption{12pt}{\baseFontSize{12pt}\headHeightSize{14.5pt}}
-
-
-
-\ExecuteOptions{}
+\ExecuteOptions{letterpaper, onecolumn, \BaseFontSize, twoside}
 \ProcessOptions\relax
 
+% CARGAR CLASE BASE
+% =================
+\LoadClassWithOptions{book}
 
-
-\LoadClass[letterpaper,onecolumn,\@BaseFontSize,twoside]{book}
 
 \def\titulo#1{\gdef\Titulo{#1}}
 \def\autor#1{\gdef\Autor{#1}}
@@ -46,7 +58,7 @@
 \setlength{\headheight}{1.5\headheight}
 \setlength{\textwidth}{16 cm}
 \setlength{\textheight}{8.7 in}
-\setlength{\headheight}{\@HeadHeightSize}
+\setlength{\headheight}{\HeadHeightSize}
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[spanish]{babel}
