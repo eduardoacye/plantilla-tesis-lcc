@@ -1,3 +1,13 @@
+% -*- coding: utf-8 -*-
+
+% Clase LaTeX2e para la elaboración de trabajos de tesis en LCC
+% Lic. en Ciencias de la Computación - Departamento de Matemáticas
+%                      Universidad de Sonora
+
+% Julio Waissman Vilanova
+% modificado por Eduardo Acuña Yeomans
+
+
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{tesislcc}[2011/01/15 v0.9]
 \def\@tempa#1#2\@nil{\edef\@classname{#1}}
