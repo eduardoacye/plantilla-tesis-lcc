@@ -1,0 +1,135 @@
+\section{Introducción}
+
+En este capítulo se abordará la manera agregar citas de la bibliografía; referencias a figuras y 
+cuadros; algoritmos.\\
+
+\section{Citas textuales y referencias}
+
+En el documento se puede hacer referencia tanto a \emph{labels} (etiquetas) o entradas en la 
+bibliografía.\\
+
+\subsection{A figuras y cuadros}
+En el caso de las referencias a figuras o cuadros se utiliza el comando \texttt{\textbackslash 
+cref\{label\}}, en donde \texttt{label} es el nombre del identificador de la figura o tabla. Por 
+ejemplo, en el \cref{Ta:primer ejemplo2} podemos observar que se ven unas fórmulas matemáticas 
+chistosas.\\
+
+\subsection{A la bibliografía}
+En el caso de las referencias a entradas de la bibliografía se utiliza el comando 
+\texttt{\textbackslash cite\{label\}}, en donde \texttt{label} es el nombre de la entrada de la 
+referencia bibliográfica. Por ejemplo, el artículo de Sachdeva \cite{chackra} presenta una 
+novedosa y arcana técnica para la regularización de los \emph{chakras}.\\
+
+\subsection{Múltiples referencias}
+En ocaciones es deseable referenciar a dos o mas etiquetas o entradas de la bibliografía, en dicho 
+caso se pueden enlistar los argumentos de los comandos \texttt{\textbackslash cref} y 
+\texttt{\textbackslash cite} separados por comas. Por ejemplo, dos trabajos de tesis que fueron 
+inspiración para la elaboración de las \cref{fig:pdf,fig:png} fueron 
+\cite{ejemplo_maestria,ejemplo_tesis_doctoral}.
+
+\section{Códigos}
+
+\subsection{Seudocódigos}
+Para escribir algoritmos en seudocódigo con palabras clave en español podemos utilizar el entorno 
+\texttt{algorithm} y \texttt{algorithmic}, el primero nos permite etiquetar y titular el 
+algoritmo, mientras que el segundo es el entorno en donde se escribe el seudocódigo. Por ejemplo, 
+el algoritmo \cref{alg1} describe la operación de potenciación.\\
+
+\begin{algorithm}
+	\caption{Calcula $y = x^n$}
+    \label{alg1}
+    \begin{algorithmic}
+		\REQUIRE $n \geq 0 \vee x \neq 0$
+        \ENSURE $y = x^n$
+        
+        \STATE $y \leftarrow 1$
+        
+        \IF{$n < 0$}
+        	\STATE $X \leftarrow 1 / x$
+            \STATE $N \leftarrow -n$
+        \ELSE
+        	\STATE $X \leftarrow x$
+            \STATE $N \leftarrow n$
+        \ENDIF
+        
+        \WHILE{$N \neq 0$}
+        	\IF{$N$ es par}
+            	\STATE $X \leftarrow X \times X$
+                \STATE $N \leftarrow N / 2$
+            \ELSE[$N$ es impar]
+            	\STATE $y \leftarrow y \times X$
+                \STATE $N \leftarrow N - 1$
+            \ENDIF
+        \ENDWHILE
+	\end{algorithmic}
+\end{algorithm}
+
+Podemos tomar el ejemplo del algoritmo \emph{quicksort} del Cormen, el cual tiene un tiempo de 
+ejecución en el peor de los casos de $\Theta \left(n^2 \right)$ y en el caso promedio $\Theta 
+\left( n \lg n \right)$ sobre un arreglo de entrada de $n$ números y escribirlo de manera similar 
+a como aparece en el libro \cref{alg:quicksort}.\\
+
+\begin{algorithm}
+	\caption{Ordenamiento \emph{quicksort}}
+    \label{alg:quicksort}
+
+	\vspace{10 pt}
+	$\textsc{Quicksort}\left(A,p,r\right)$
+
+    \begin{algorithmic}[1]
+		\IF{$p < r$}
+        	\STATE $q \leftarrow \textsc{Partition} \left( A, p, r \right)$
+            \STATE $\textsc{Quicksort}\left( A, p, q-1 \right)$
+            \STATE $\textsc{Quicksort}\left( A, q+1, r \right)$
+        \ENDIF
+	\end{algorithmic}
+    
+    \vspace{10 pt}
+    $\textsc{Partition}\left(A,p,r\right)$
+    \begin{algorithmic}[1]
+    	\STATE $x \leftarrow A\left[r\right]$
+        \STATE $i \leftarrow p-1$
+        \FOR{$j\leftarrow p$ \TO $r-1$}
+        	\IF{$A\left[j\right] \leq x$}
+            	\STATE $i \leftarrow i+1$
+                \STATE intercambia $A\left[i\right]$ con $A\left[j\right]$
+            \ENDIF
+        \ENDFOR
+        \STATE intercambia $A\left[i+1\right]$ con $A\left[r\right]$
+        \RETURN $i + 1$
+    \end{algorithmic}
+\end{algorithm}
+
+\subsection{Códigos fuente}
+
+Si el código que deseamos mostrar está escrito en algún lenguaje de programación en particular, 
+utilizamos los entornos \texttt{listing} y \texttt{minted}. Por ejemplo, el 
+\cref{code:rubyexample} es un ejemplo de código en el lenguaje \emph{Ruby}.\\
+
+\begin{listing}[H]
+\begin{minted}[frame=single]{ruby}
+lazy_integers = (1..Float::INFINITY).lazy
+lazy_integers.collect { |x| x ** 2 }.
+              select { |x| x.even? }.
+              reject { |x| x < 1000 }.
+              first(5)
+\end{minted}
+\caption{Ejemplo de código en Ruby}
+\label{code:rubyexample}
+\end{listing}
+
+El programa descrito en el \cref{code:helloworld} es todo un clásico en el mundo de la 
+programación.\\
+
+\begin{listing}[H]
+\begin{minted}[frame=single]{c}
+#include <stdio.h>
+
+main()
+{
+    printf("hello, world\n");
+}
+\end{minted}
+\caption{Clásigo \emph{hola mundo} en el lenguaje \emph{C}.}
+\label{code:helloworld}
+\end{listing}
