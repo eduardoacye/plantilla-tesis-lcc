@@ -171,3 +171,6 @@ TSWLatexianTemp*
 
 # KBibTeX
 *~*
+
+# Emacs
+auto/
