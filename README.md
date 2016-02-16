@@ -6,4 +6,6 @@ Para compilar el archivo en un pdf:
 
 ```shell
 $ pdflatex -shell-escape main.tex
+$ bibtex main
+$ pdflatex -shell-escape main.tex
 ```

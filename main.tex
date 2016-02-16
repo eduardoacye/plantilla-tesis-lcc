@@ -1,31 +1,55 @@
+% -*- coding: utf-8 -*-
+
+% Plantilla para la elaboración de trabajos de tesis en LCC
+% Lic. en Ciencias de la Computación - Departamento de Matemáticas
+%                      Universidad de Sonora
+
+% Julio Waissman Vilanova
+% modificado por Eduardo Acuña Yeomans
+
+
+
+% Clase de documento
 \documentclass[12pt]{tesislcc}
 
 \begin{document}
 
+% Así se fija el título, autor, director y fecha del documento
 \titulo{Clase y plantilla en \LaTeX \ para realizar una tesis de la Licenciatura en Ciencias de la 
 Computación}
+
 \autor{Julio Waissman Vilanova}
+
 \director{Zutano Funánez Mengano}
+
 \fecha{2016}
 
-\frontcover
+% Aquí se pone la portada (equivalente a \frontcover)
+\portada
 
+% Esto indica que inician las páginas preliminares del documento (se enumeran en
+% romano)
 \frontmatter
 
-\begin{summary}
+% El resumen (equivalente a summary) puede ser desea colocar el contenido del
+% resumen en un archivo por separado, utiliza dentro del entorno el comando
+% \input{archivo.tex} 
+\begin{resumen}
 En este apartado va un breve resumen del trabajo de tesis, de preferencia en media página en 
 español y media página en inglés. Si no fuera el caso, pues una página a lo más en español. Es muy 
 importante notar que el resumen no es una introducción. En el resumen no debe incluirse 
 referencias bibliográficas ni listas. Mucha gente solo lee el resumen de un trabajo, así que es 
 muy importante hacerlo muy cuidadosamente y que invite al que lo lee a seguir con el resto de la 
 tesis. Esto es lo que se hace normalmente al último, cuando el resto de la tesis está acabada.
-\end{summary}
+\end{resumen}
 
-\begin{dedication}
+% La dedicatoria (equivalente a dedication)
+\begin{dedicatoria}
 A la Virgencita de Guadalupe y el Santo Enmascarado de Plata
-\end{dedication}
+\end{dedicatoria}
 
-\begin{acknowledgements}
+% Los agradecimientos (equivalente a acknowledgements)
+\begin{agradecimientos}
 Esta sección se realiza al último, y una vez que se haya liberado la
 tesis para su impresión. Los agradecimientos son completamente libres y pueden ser tan 
 sentimentales, graciosos o profundos como se quiera. A diferencia de la dedicatoria, que debe 
@@ -37,12 +61,15 @@ persona en particular.
 Igualmente, es importante resaltar que los agradecimientos y la
 dedicatoria son completamente accesorios y si no se tiene la intención de agradecer a nadie (o no 
 se quiere dedicar el trabajo a alguien), pues simplemente se eliminan y no hay ningún problema.
-\end{acknowledgements}
+\end{agradecimientos}
 
+% El siguiente comando coloca el índice general
 \tableofcontents
 
+% Esto indica que inician las páginas principales del documento
 \mainmatter
 
+% La introducción (equivalente a introduction)
 \introduccion
 \input{intro.tex}
 
@@ -56,24 +83,33 @@ se quiere dedicar el trabajo a alguien), pues simplemente se eliminan y no hay n
 \input{cap3.tex}
 
 
+% Las conclusiones (equivalente a conclusions)
 \conclusiones
 \input{conclusion.tex}
 
+% Esto indica el inicio de los apéndices
 \appendix
 
 \chapter{Información adicional}
 \input{apend1.tex}
 
+% Muestra una lista de figuras
 \listoffigures
 
+% Muestra una lista de cuadros
 \listoftables
 
+% Muestra una lista de algoritmos
 \listofalgorithms
 
+% Muestra una lista de códigos
 \listoflistings
 
+% Esto indica que todas las entradas de la bibliografía se mostrarán aunque no
+% se hayan citado en el cuerpo del documento
 \nocite{*}
 
+% Este comando incluye la bibliografía del archivo biblio.bib
 \bibliografia{biblio}
 
 
